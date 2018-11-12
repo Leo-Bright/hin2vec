@@ -176,7 +176,7 @@ class HIN(object):
                 if class_ not in class_count:
                     class_count[class_] = len(to_ids)
                     continue
-                class_count[class_] += len(to_ids)
+                class_count[class_] += len(to_ids) # class_count={node_id: in-degree}
         print self.edge_class2id
         for class_, count in class_count.items():
             print class_, count
