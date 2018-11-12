@@ -2,7 +2,7 @@
 # -*- encoding: utf8 -*-
 
 import optparse
-from sklearn import cross_validation
+from sklearn import model_selection as cross_validation
 from sklearn.svm import LinearSVC
 import sys
 

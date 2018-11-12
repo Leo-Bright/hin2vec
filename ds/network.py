@@ -95,11 +95,11 @@ class HIN(object):
     def add_edge(self, from_node, from_class, to_node, to_class,edge_class,
                  weight = 1):
         if edge_class not in self.edge_class2id:
-            self.edge_class2id[edge_class] = len(self.edge_class2id)
+            self.edge_class2id[edge_class] = len(self.edge_class2id) #e.g. id == added order
         edge_id = self.edge_class2id[edge_class]
 
         if edge_id not in self.edge_class_id_available_node_class:
-            self.edge_class_id_available_node_class[edge_id] = (from_class, to_class)
+            self.edge_class_id_available_node_class[edge_id] = (from_class, to_class)  #e.g. include from_node's type and end_node's type
 
         if from_node not in self.node2id:
             self.node2id[from_node] = len(self.node2id)
