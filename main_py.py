@@ -36,6 +36,8 @@ def main(graph_fname, node_vec_fname, path_vec_fname, options):
 
     _, tmp_node_vec_fname = tempfile.mkstemp()
     _, tmp_path_vec_fname = tempfile.mkstemp()
+    print tmp_node_vec_fname
+    print tmp_path_vec_fname
 
     model = MP2Vec(size=options.dim,
                    window=options.window,
