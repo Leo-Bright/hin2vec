@@ -89,7 +89,7 @@ class MP2Vec(Common):
         '''
             input:
                 training_fname:
-                    each line: <node_id> <edge_id> ...
+                    each line: <node_id> <edge_id> <node_id> <edge_id> <node_id>....
         '''
         def get_training_size(fname):
             with open(fname, 'r') as f:

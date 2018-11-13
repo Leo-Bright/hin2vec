@@ -28,14 +28,17 @@ def main(graph_fname, node_vec_fname, path_vec_fname, options):
     g = loader.load_a_HIN(graph_fname)
 
     print 'Generate random walks...'
-    _, tmp_walk_fname = tempfile.mkstemp()
+    # _, tmp_walk_fname = tempfile.mkstemp()
+    tmp_walk_fname = "tmp_walk_fname.txt"
     print tmp_walk_fname
     with open(tmp_walk_fname, 'w') as f:
         for walk in g.random_walks(options.walk_num, options.walk_length):
             f.write('%s\n' % ' '.join(map(str, walk)))
 
-    _, tmp_node_vec_fname = tempfile.mkstemp()
-    _, tmp_path_vec_fname = tempfile.mkstemp()
+    # _, tmp_node_vec_fname = tempfile.mkstemp()
+    # _, tmp_path_vec_fname = tempfile.mkstemp()
+    tmp_node_vec_fname = "tmp_node_vec_fname.txt"
+    tmp_path_vec_fname = "tmp_path_vec_fname.txt"
     print tmp_node_vec_fname
     print tmp_path_vec_fname
 
