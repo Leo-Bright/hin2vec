@@ -32,9 +32,9 @@ class Node(object):
 class NodeVocab(object):
 
     def __init__(self):
-        self.nodes = []
-        self.node2index = {}
-        self.node_count = 0
+        self.nodes = []  # all distinct Node objects,with input order
+        self.node2index = {} # the all node_ids {node_id:node_index} ,the node_index is the order that node_id read from tmp_walk_file
+        self.node_count = 0 # the num of read node times , include repeated read
 
     def add_node(self, node_id):
         self.node2index[node_id] = len(self.nodes)
@@ -70,7 +70,7 @@ class NodeVocab(object):
         '''
             input:
                 training_fname:
-                    each line: <node_id> <edge_id> ...
+                    each line: <node_id> <edge_id> <node_id> <edge_id> <node_id> <edge_id>...
                 available_ids: set([<node_id>])
                     node_id should be a string
         '''
@@ -134,7 +134,7 @@ class NodeVocab(object):
         self.nodes.sort(key=lambda x: x.count, reverse=True)
         node2index = {}
         for i, node in enumerate(self.nodes):
-            node2index[node.node_id] = i
+            node2index[node.node_id] = i    #actually, is not change ?
         self.node2index = node2index
 
     def count(self):
@@ -189,7 +189,7 @@ class PathVocab(object):
         '''
             input:
                 training_fname:
-                    each line: <node_id> <edge_id> ...
+                    each line: <node_id> <edge_id> <node_id> <edge_id> <node_id> <edge_id> <node_id> <edge_id>...
                 window_size: the maximal window size for paths
         '''
         def inverse_edges(edges, inverse_mapping):
@@ -206,7 +206,8 @@ class PathVocab(object):
                 for w in range(window_size):
                     for i in range(len(tokens)-w):
                         edges = tokens[i:i+1+w]
-                        path = ','.join(edges)
+                        # path = ','.join(edges)
+                        path = ''.join(edges)
                         if path not in path2index:
 
                             if inverse_mapping is not None:

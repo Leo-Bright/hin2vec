@@ -388,12 +388,14 @@ def get_context(node_index_walk, edge_walk, walk, path_vocab,
             y = node_index_walk[i]
             if x == y or y in visited:
                 break
-            path = path_vocab.path2index[','.join(edge_walk[index:i])]
+            # path = path_vocab.path2index[','.join(edge_walk[index:i])]
+            path = path_vocab.path2index[''.join(edge_walk[index:i])]
             context.append((y, path, edge_walk[i-1]))
             visited.add(y)
     else:
         for i in range(index+1, end):
-            path = path_vocab.path2index[','.join(edge_walk[index:i])]
+            # path = path_vocab.path2index[','.join(edge_walk[index:i])]
+            path = path_vocab.path2index[''.join(edge_walk[index:i])]
             context.append((node_index_walk[i], path, edge_walk[i-1]))
     return context
 
