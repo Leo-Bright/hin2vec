@@ -92,8 +92,7 @@ class HIN(object):
                 inverse_mapping[str(self.edge_class2id[edge_class])] = str(self.edge_class2id[inversed])
         return inverse_mapping
 
-    def add_edge(self, from_node, from_class, to_node, to_class,edge_class,
-                 weight = 1):
+    def add_edge(self, from_node, from_class, to_node, to_class, edge_class, weight=1):
         if edge_class not in self.edge_class2id:
             self.edge_class2id[edge_class] = len(self.edge_class2id) #e.g. id == added order
         edge_id = self.edge_class2id[edge_class]

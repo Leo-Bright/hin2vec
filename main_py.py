@@ -14,6 +14,7 @@ __author__ = 'sheep'
 
 
 def main(graph_fname, node_vec_fname, path_vec_fname, options):
+
     '''\
     %prog [options] <graph_fname> <node_vec_fname> <path_vec_fname>
 
@@ -72,6 +73,7 @@ def main(graph_fname, node_vec_fname, path_vec_fname, options):
     output_path2vec(g, tmp_path_vec_fname, path_vec_fname)
     return 0
 
+
 def output_node2vec(g, tmp_node_vec_fname, node_vec_fname):
     with open(tmp_node_vec_fname) as f:
         with open(node_vec_fname, 'w') as fo:
@@ -87,7 +89,8 @@ def output_node2vec(g, tmp_node_vec_fname, node_vec_fname):
                 line = '%s %s\n' % (id2node[int(id_)], vectors)
                 fo.write(line)
 
-#FIXME: to support more than 10 different meta-paths
+
+# FIXME: to support more than 10 different meta-paths
 def output_path2vec(g, tmp_path_vec_fname, path_vec_fname):
     with open(tmp_path_vec_fname) as f:
         with open(path_vec_fname, 'w') as fo:
